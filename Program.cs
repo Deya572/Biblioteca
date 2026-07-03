@@ -43,6 +43,14 @@
                         SaveBooksToFile(library);
                         Console.WriteLine("Книгата е добавена успешно!");
                         break;
+
+                    case "2":
+                        foreach (var b in library)
+                        {
+                            Console.WriteLine(b);
+                        }
+                        break;
+
                 }
             }
         }
