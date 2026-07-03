@@ -36,5 +36,21 @@ namespace Biblioteca
         {
             return $"{Isbn},{Title},{Author},{Year},{Price:F2},{Availability},{Borrower}";
         }
+
+        public static Book ToFileRow(string line)
+        {
+            string[] parts = line.Split(',');
+            if (parts.Length == 7)
+            {
+                return new Book(parts[0],
+                             parts[1],
+                             parts[2],
+                             int.Parse(parts[3]),
+                             double.Parse(parts[4]),
+                             bool.Parse(parts[5]),
+                             parts[6]);
+            }
+            return null;
+        }
     }
 }
