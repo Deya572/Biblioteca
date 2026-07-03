@@ -21,5 +21,22 @@
 
             }
         }
+
+        static List<Book> LoadBooksFromFile()
+        {
+            List<Book> library = new List<Book>();
+            if (File.Exists(FilePath))
+            {
+                foreach (string line in File.ReadAllLines(FilePath))
+                {
+                    var b = Book.ToFileRow(line);
+                    if (b != null)
+                    {
+                        library.Add(b);
+                    }
+                }
+            }
+            return library;
+        }
     }
 }
