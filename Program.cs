@@ -50,7 +50,31 @@
                             Console.WriteLine(b);
                         }
                         break;
+                    case "3":
+                        Console.Write("Въведете заглавието на книгата, която искате да заемете: ");
+                        string titleToBorrow = Console.ReadLine();
+                        Book bookToBorrow = library.Find(b => b.Title.Equals(titleToBorrow, StringComparison.OrdinalIgnoreCase));
 
+                        if (bookToBorrow != null)
+                        {
+                            if (bookToBorrow.Availability)
+                            {
+                                Console.Write("Въведете името на заемателя: ");
+                                bookToBorrow.Borrower = Console.ReadLine();
+                                bookToBorrow.Availability = false;
+                                SaveBooksToFile(library);
+                                Console.WriteLine($"Книгата \"{bookToBorrow.Title}\" е успешно заета!.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Съжалявяме, книгата вече е заета от: {bookToBorrow.Borrower}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Книгата не е намерена!");
+                        }
+                        break;
                 }
             }
         }
