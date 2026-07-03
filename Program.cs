@@ -99,7 +99,11 @@
                             Console.WriteLine($"Грешен или книгата не е била заета!");
                         }
                         break;
-
+                    case "5":
+                        running = false;
+                        Console.WriteLine("Изход от програмата.");
+                        break;
+                    
                 }
             }
         }
