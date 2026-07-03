@@ -75,6 +75,31 @@
                             Console.WriteLine($"Книгата не е намерена!");
                         }
                         break;
+
+                    case "4":
+                        Console.Write(": ");
+                        var borrodBook = library.FindAll(b => !b.Availability);
+                        foreach (var b in borrodBook)
+                        {
+                            Console.WriteLine(b);
+                        }
+                        Console.Write("Въведете ISBN на книгата, която искате да върнете: ");
+                        string returnIsbn = Console.ReadLine();
+                        Book bookToReturn = library.Find(b => b.Isbn.Equals(returnIsbn));
+
+                        if (bookToReturn != null)
+                        {
+                            bookToReturn.Availability = true;
+                            bookToReturn.Borrower = "Няма";
+                            SaveBooksToFile(library);
+                            Console.WriteLine($"Книгата \"{bookToReturn.Title}\" е успешно върната!");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Грешен или книгата не е била заета!");
+                        }
+                        break;
+
                 }
             }
         }
