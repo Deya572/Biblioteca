@@ -19,6 +19,31 @@
                 Console.WriteLine("Избор: ");
                 string choice = Console.ReadLine();
 
+                switch (choice)
+                {
+                    case "1":
+                        Console.Write("ISBN: ");
+                        string isbn = Console.ReadLine();
+
+                        Console.Write("Заглавие: ");
+                        string title = Console.ReadLine();
+
+                        Console.Write("Автор: ");
+                        string author = Console.ReadLine();
+
+                        Console.Write("Година: ");
+                        int year = int.Parse(Console.ReadLine());
+
+                        Console.Write("Цена: ");
+                        double price = double.Parse(Console.ReadLine().Replace('.', ','));
+
+                        Book newBook = new Book(isbn, title, author, year, price, true, "Няма");
+                        library.Add(newBook);
+
+                        SaveBooksToFile(library);
+                        Console.WriteLine("Книгата е добавена успешно!");
+                        break;
+                }
             }
         }
 
