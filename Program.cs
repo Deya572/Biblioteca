@@ -38,5 +38,15 @@
             }
             return library;
         }
+
+        static void SaveBooksToFile(List<Book> library)
+        {
+            List<string> rows = new List<string>();
+            foreach (var b in library)
+            {
+                rows.Add(b.ToFileRow());
+            }
+            File.WriteAllLines(FilePath, rows);
+        }
     }
 }
